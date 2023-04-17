@@ -4,6 +4,7 @@
 ![Desktop](preview/desktop.png)
 
 ### Live
+https://frontendmentor-easybank-dusky.vercel.app/
 
 ### Built with
 ![Next JS](https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white)
