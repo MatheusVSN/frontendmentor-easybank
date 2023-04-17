@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import LogoIcon from "../../images/logo.svg";
 import CloseIcon from "../../images/icon-close.svg";
@@ -21,7 +22,7 @@ function MobileNavigationOptions({ Visible }: { Visible: boolean }) {
       >
         {Options.map((index: string) => {
           return (
-            <li className="text-center text-dark-blue p-4">
+            <li key={uuidv4()} className="text-center text-dark-blue p-4">
               <a className="w-full">{index}</a>
             </li>
           );
@@ -41,7 +42,7 @@ function DesktopNavigationOptions() {
   }
 
   function removeHoveringElement() {
-    setElementHovering((previousValue) => {
+    setElementHovering(() => {
       return "";
     });
   }
@@ -65,7 +66,7 @@ function DesktopNavigationOptions() {
                   className={`${
                     elementHovering === index &&
                     "bg-gradient-to-r from-lime-green to-bright-cyan rounded-full"
-                  } transition w-full h-[5%]`}
+                  } transition w-full h-[5%] relative bottom-1`}
                 ></div>
               </li>
             );
