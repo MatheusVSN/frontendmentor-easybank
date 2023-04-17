@@ -1,17 +1,18 @@
 import Image, { StaticImageData } from "next/image";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 interface SocialObject {
   Name: string;
-  ImageSource: StaticImageData;
+  ImageSource: (props: { fill: string }) => JSX.Element;
 }
 
-import Logo from "../../../images/logo-white.svg";
-import FacebookIcon from "../../../images/icon-facebook.svg";
-import YoutubeIcon from "../../../images/icon-youtube.svg";
-import TwitterIcon from "../../../images/icon-twitter.svg";
-import PinterestIcon from "../../../images/icon-pinterest.svg";
-import InstagramIcon from "../../../images/icon-instagram.svg";
+import Logo from "../../../images/logos/logo"
+import FacebookIcon from "../../../images/logos/facebook";
+import YoutubeIcon from "../../../images/logos/youtube";
+import TwitterIcon from "../../../images/logos/twitter";
+import PinterestIcon from "../../../images/logos/pinterest";
+import InstagramIcon from  "../../../images/logos/instagram";
 
 const SocialMedia: SocialObject[] = [
   { Name: "Facebook", ImageSource: FacebookIcon },
@@ -30,17 +31,29 @@ const FooterOptions: string[] = [
   "Privacy Police",
 ];
 
+function SocialMediaLink({ImageSource}: { ImageSource: any}) {
+  const [currentColor, setCurrentColor] = useState("#FFF");
+
+  function changeColor(HEX: string) {
+    setCurrentColor(() => {
+      return HEX;
+    })
+  }
+
+  return <ImageSource fill={currentColor} onMouseEnter={() => changeColor("#31d35c")} onMouseLeave={() => changeColor("#FFF")}/>
+}
+
 export default function Footer() {
   return (
     <footer className="bg-dark-blue py-10 grid gap-y-8 justify-items-center md:flex md:justify-around">
       <div className="grid place-content-center gap-16">
-        <Image className="object-contain" src={Logo} alt="Easybank" />
+        <Logo fill="#FFF" />
 
         <ul className="list-none flex gap-x-4 justify-center">
           {SocialMedia.map((index) => {
             return (
-              <li key={uuidv4()}>
-                <Image className="hover:cursor-pointer" src={index.ImageSource} alt={index.Name} />
+              <li className="hover:cursor-pointer" key={uuidv4()}>
+                <SocialMediaLink ImageSource={index.ImageSource}/>
               </li>
             );
           })}

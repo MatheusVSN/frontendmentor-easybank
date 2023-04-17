@@ -57,7 +57,7 @@ function GenerateTopic({
         src={ImageSource}
         alt={Title}
       />
-      <div className="rounded-b-lg bg-white p-8 max-lg:h-full max-[1272px]:h-[500px]">
+      <div className="rounded-b-lg bg-white p-8 h-[350px] max-lg:h-full max-[1272px]:h-[500px]">
         <div className="flex flex-col gap-y-2">
           <p className="text-sm text-grayish-blue">By {Writer}</p>
           <p className="text-2xl text-dark-blue transition hover:cursor-pointer hover:text-lime-green">
