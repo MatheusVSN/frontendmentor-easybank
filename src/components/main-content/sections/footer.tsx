@@ -23,7 +23,7 @@ const SocialMedia: SocialObject[] = [
 ];
 
 const FooterOptions: string[] = [
-  "Abous Us",
+  "About Us",
   "Contact",
   "Blog",
   "Careers",
